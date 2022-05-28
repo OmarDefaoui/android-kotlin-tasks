@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">week2</string>
+    <string name="mercedes">Mercedes-Benz</string>
+    <string name="car_assistant_drive">Car Assistant Drive</string>
+    <string name="logo">Logo</string>
+    <string name="hello_there">Hello there,</string>
+    <string name="welcome_back">welcome back</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_your_password">Forgot your Password ?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="new_here_sign_up_instead">New here ? Sign Up instead</string>
+    <string name="header">header</string>
+    <string name="get_on_board">Get on Board</string>
+    <string name="select_profile_picture">Select profile picture</string>
+    <string name="phone_number">Phone number</string>
+    <string name="full_name">Full Name</string>
+    <string name="remember_me">Remember Me</string>
+</resources>
