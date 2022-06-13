@@ -1,4 +1,5 @@
 package com.maroc.notes.model
 
-class Note {
-}
+import java.util.*
+
+data class Note(var title: String, var body: String, var date: Date)
