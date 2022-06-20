@@ -1,13 +1,17 @@
-package com.maroc.notes.utils
+package com.maroc.notes.ui
 
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.maroc.notes.databinding.ItemNoteBinding
 import com.maroc.notes.model.Note
 import java.text.SimpleDateFormat
+import java.util.*
 
-class NoteAdapter(var notes: List<Note>) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter(var notes: List<Note>, private val viewModel: NotesViewModel) :
+    RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     inner class NoteViewHolder(val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -27,15 +31,24 @@ class NoteAdapter(var notes: List<Note>) : RecyclerView.Adapter<NoteAdapter.Note
             tvBody.text = notes[position].body
             tvDate.text =
                 SimpleDateFormat("EEE, d MMM yyyy HH:mm")
-                    .format(notes[position].date).toString()
+                    .parse(notes[position].date).toString()
 
             ivEdit.setOnClickListener {
-
+                showDialogUpdateNote(it.context, notes[position])
             }
             ivDelete.setOnClickListener {
-
+                viewModel.delete(notes[position])
             }
         }
+    }
+
+    fun showDialogUpdateNote(context: Context, note: Note) {
+        AddNoteDialog(context, object : AddDialogListener {
+            override fun onAddButtonClicked(item: Note) {
+                item.id = note.id
+                viewModel.update(item)
+            }
+        }, note).show()
     }
 
     override fun getItemCount(): Int {
